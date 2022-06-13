@@ -2,7 +2,9 @@
 // If self hosting, you may not be able to use the create() method since it requires
 // that file names do not change and are all hosted from the same directory.
 
+console.log("Sourced player.js.");
 (function(IVSPlayerPackage) {
+  console.log("Attempting to initialize IVS player...");
   // First, check if the browser supports the IVS player.
   if (!IVSPlayerPackage.isPlayerSupported) {
     console.warn("The current browser does not support the IVS player.");
