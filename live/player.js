@@ -17,7 +17,9 @@ console.log("Sourced player.js.");
   // Initialize player
   const player = IVSPlayerPackage.create();
   console.log("IVS Player version:", player.getVersion());
-  player.attachHTMLVideoElement(document.getElementById("video-player"));
+  const player_element = document.getElementById("video-player");
+  console.log("Player element", player_element);
+  player.attachHTMLVideoElement(player_element);
 
   // Attach event listeners
   player.addEventListener(PlayerState.PLAYING, function() {
