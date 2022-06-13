@@ -1,15 +1,15 @@
-<!doctype html>
-<html lang=en>
+---
+---
+<link rel="stylesheet" href="player.css" />
+<script src="https://player.live-video.net/1.10.0/amazon-ivs-player.min.js"></script>
+<script src="player.js"></script>
 
-<head>
-  <meta charset=utf-8>
-  <script src="https://player.live-video.net/1.10.0/amazon-ivs-player.min.js"></script>
-  <script src="player.js" defer></script>
-  <title>squeak.dog</title>
-</head>
-
-<body>
+<div class="video_holder">
   <video id="video-player" controls playsinline></video>
-</body>
+</div>
 
-</html>
+<script>
+  const video_url = "https://fcc3ddae59ed.us-west-2.playback.live-video.net/api/video/v1/us-west-2.893648527354.channel.DmumNckWFTqz.m3u8";
+  const player_element = document.getElementById("video-player");
+  load_ivs_player(window.IVSPlayer, player_element, video_url);
+</script>

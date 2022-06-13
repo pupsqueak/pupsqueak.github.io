@@ -2,9 +2,7 @@
 // If self hosting, you may not be able to use the create() method since it requires
 // that file names do not change and are all hosted from the same directory.
 
-console.log("Sourced player.js.");
-(function(IVSPlayerPackage) {
-  console.log("Attempting to initialize IVS player...");
+function load_ivs_player(IVSPlayerPackage, player_element, video_url) {
   // First, check if the browser supports the IVS player.
   if (!IVSPlayerPackage.isPlayerSupported) {
     console.warn("The current browser does not support the IVS player.");
@@ -17,8 +15,6 @@ console.log("Sourced player.js.");
   // Initialize player
   const player = IVSPlayerPackage.create();
   console.log("IVS Player version:", player.getVersion());
-  const player_element = document.getElementById("video-player");
-  console.log("Player element", player_element);
   player.attachHTMLVideoElement(player_element);
 
   // Attach event listeners
@@ -44,9 +40,7 @@ console.log("Sourced player.js.");
 
   // Setup stream and play
   player.setAutoplay(true);
-  player.load(
-    "https://fcc3ddae59ed.us-west-2.playback.live-video.net/api/video/v1/us-west-2.893648527354.channel.DmumNckWFTqz.m3u8"
-  );
+  player.load(video_url);
   player.setVolume(0.5);
-})(window.IVSPlayer);
+}
 
