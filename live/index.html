@@ -1,0 +1,15 @@
+---
+---
+<link rel="stylesheet" href="player.css" />
+<script src="https://player.live-video.net/1.10.0/amazon-ivs-player.min.js"></script>
+<script src="player.js"></script>
+
+<div class="video_holder">
+  <video id="video-player" controls playsinline></video>
+</div>
+
+<script>
+  const video_url = "https://fcc3ddae59ed.us-west-2.playback.live-video.net/api/video/v1/us-west-2.893648527354.channel.DmumNckWFTqz.m3u8";
+  const player_element = document.getElementById("video-player");
+  load_ivs_player(window.IVSPlayer, player_element, video_url);
+</script>
