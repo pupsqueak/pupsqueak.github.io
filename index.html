@@ -1,16 +1,75 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
-
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="refresh" content="0; url=https://bsky.app/profile/squeak.dog" />
-    <title>Redirect</title>
-  </head>
-
-  <body>
-      <p><a href="https://bsky.app/profile/squeak.dog">Redirect to Bluesky</a></p>
-  </body>
-
+    <meta name="theme-color" content="#f5f5f5">
+    <title>Squeak's Profile</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+        <img src="media/sun-icon.svg" alt="Switch to light mode" class="sun-icon">
+        <img src="media/moon-icon.svg" alt="Switch to dark mode" class="moon-icon">
+    </button>
+    <div class="container">
+        <div class="profile">
+            <div class="profile-image">
+                <img src="media/squeak-headshot.jpeg" alt="Squeak's headshot" class="profile-img">
+            </div>
+            <h1>Squeak</h1>
+            <div class="bio">
+                <!-- Replace with actual bio -->
+                <p>Hi! I'm Squeak, a friendly pup who loves making new friends and sharing my adventures online.</p>
+            </div>
+            <div class="social-links">
+                <a href="https://bsky.app/profile/squeak.dog" class="social-link">
+                    <img src="media/Bluesky_Logo.svg" alt="Bluesky logo" class="social-icon">
+                    Bluesky
+                </a>
+                <a href="https://t.me/pupsqueak" class="social-link">
+                    <img src="media/Logo.svg" alt="Telegram logo" class="social-icon">
+                    Telegram
+                </a>
+            </div>
+        </div>
+    </div>
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        let isToggling = false;
+        
+        // Function to update theme based on system preference
+        function updateThemeFromSystem() {
+            if (!isToggling) {
+                html.setAttribute('data-theme', darkModeMediaQuery.matches ? 'dark' : 'light');
+                document.querySelector('meta[name="theme-color"]').content = 
+                    darkModeMediaQuery.matches ? '#1a1a1a' : '#f5f5f5';
+            }
+        }
+        
+        // Initial theme setup - always follow system
+        updateThemeFromSystem();
+        
+        // Listen for system theme changes
+        darkModeMediaQuery.addListener(updateThemeFromSystem);
+        
+        // Handle manual theme toggle with debounce
+        themeToggle.addEventListener('click', () => {
+            if (isToggling) return;
+            isToggling = true;
+            
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            document.querySelector('meta[name="theme-color"]').content = 
+                newTheme === 'dark' ? '#1a1a1a' : '#f5f5f5';
+            
+            setTimeout(() => {
+                isToggling = false;
+            }, 300);
+        });
+    </script>
+</body>
 </html>
