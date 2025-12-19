@@ -144,6 +144,7 @@ body {
 .social-links {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 1.5rem;
     margin-top: 2rem;
 }
@@ -185,6 +186,10 @@ h1 {
     
     .profile {
         padding: 1.5rem;
+    }
+    
+    .social-links {
+        gap: 1rem;
     }
 } 
 
