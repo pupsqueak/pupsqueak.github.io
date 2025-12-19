@@ -187,3 +187,7 @@ h1 {
         padding: 1.5rem;
     }
 } 
+
+.blue-padlock-icon {
+    filter: invert(35%) sepia(90%) saturate(4000%) hue-rotate(200deg);
+}
